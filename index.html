@@ -3,28 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Scroll Studio — Social Media Tartalomgyártás</title>
-<meta name="description" content="Havi 8–15 profi videó, kézből kész social media. Nem sablont kapsz — hanem rendszert.">
+<title>Scroll Studio — Aki látszik, az játszik.</title>
+<meta name="description" content="Mi felépítjük a jelenléted. 1000+ videó, több millió elérés. Profi social media rendszer, ami helyetted dolgozik.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
+<style>
+/* Cookie banner */
+.cookie-banner { position: fixed; bottom: 3.5rem; left: 1rem; right: 1rem; z-index: 150; max-width: 480px; padding: 1.2rem 1.5rem; background: rgba(18,18,18,0.95); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: 14px; display: none; animation: slideUp 0.4s ease; }
+.cookie-banner.show { display: block; }
+.cookie-banner p { font-size: 0.82rem; color: var(--text-sec); line-height: 1.5; margin-bottom: 0.8rem; }
+.cookie-banner a { color: var(--cyan); text-decoration: none; }
+.cookie-btns { display: flex; gap: 0.5rem; }
+.cookie-accept { padding: 0.5rem 1.2rem; border-radius: 8px; background: var(--pink); color: #fff; border: none; font-family: var(--font); font-size: 0.82rem; font-weight: 600; cursor: pointer; }
+.cookie-reject { padding: 0.5rem 1.2rem; border-radius: 8px; background: transparent; color: var(--text-sec); border: 1px solid var(--border); font-family: var(--font); font-size: 0.82rem; font-weight: 500; cursor: pointer; }
+/* Logo in author bar */
+.author-logo { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(255,255,255,0.15); }
+@keyframes slideUp { from{transform:translateY(100%);opacity:0} to{transform:translateY(0);opacity:1} }
+</style>
 </head>
 <body>
 
-<!-- TOP NAV -->
+<!-- TOP NAV — only secondary links -->
 <div class="top-nav">
-  <a class="top-tab active" href="/">Főoldal</a>
-  <a class="top-tab" href="/studio/">Konfigurátor</a>
-  <a class="top-tab" href="/ajanlat/">Ajánlat</a>
+  <a class="top-tab active" href="/">Scroll Studio</a>
+  <a class="top-tab" href="/aszf/">ÁSZF</a>
+  <a class="top-tab" href="/adatvedelem/">Adatvédelem</a>
   <a class="top-tab" href="/kapcsolat/">Kapcsolat</a>
 </div>
 
 <!-- RIGHT NAV -->
 <div class="right-nav" id="rightNav">
   <div class="rnav-item active" data-s="0" data-tip="Főoldal">🏠</div>
-  <div class="rnav-item" data-s="1" data-tip="Szolgáltatások">🎥</div>
+  <div class="rnav-item" data-s="1" data-tip="Mit kapsz">🎥</div>
   <div class="rnav-item" data-s="2" data-tip="Hogyan működik">⚡</div>
-  <div class="rnav-item" data-s="3" data-tip="Referenciák">🏆</div>
+  <div class="rnav-item" data-s="3" data-tip="Eredmények">🏆</div>
   <div class="rnav-item" data-s="4" data-tip="Számok">📊</div>
   <div class="rnav-sep"></div>
   <div class="rnav-item" data-s="5" data-tip="Indulj el">🚀</div>
@@ -34,18 +47,22 @@
 <!-- FEED -->
 <div class="feed" id="feed">
 
-  <!-- HERO -->
+  <!-- 1. HERO — pozíció és eredmény, nem szolgáltatás -->
   <div class="slide slide--hero">
     <div class="slide-bg"><div class="particles"></div></div>
     <div class="slide-content">
       <div class="text-col">
-        <div class="author"><div class="author-avatar">S</div><span class="author-name">@scrollstudio</span><button class="author-follow">Követés</button></div>
-        <div class="slide-text">
-          <h2>Forgatunk, vágunk, posztolunk.<br><span class="hl">Te csak az eredményt nézed.</span></h2>
-          <p>Havi 8–15 profi videó, kézből kész social media. Nem sablont kapsz — hanem rendszert.</p>
+        <div class="author">
+          <img src="/assets/logo.png" alt="Scroll Studio" class="author-logo">
+          <span class="author-name">@scrollstudio</span>
+          <button class="author-follow" onclick="window.open('#','_blank')">Követés</button>
         </div>
-        <a href="/studio/" class="slide-cta">Nézd meg, mennyibe kerül →</a>
-        <div class="slide-tags"><span>#scrollstudio</span> <span>#tartalomgyártás</span> <span>#akilátszikazjátszik</span></div>
+        <div class="slide-text">
+          <h2>Aki látszik,<br><span class="hl">az játszik.</span></h2>
+          <p>Mi felépítjük a jelenléted. Profi videók, kész stratégia, mérhető eredmény — te nem nyúlsz semmihez.</p>
+        </div>
+        <a href="/studio/" class="slide-cta">Saját csomagot építek →</a>
+        <div class="slide-tags"><span>#scrollstudio</span> <span>#akilátszikazjátszik</span></div>
         <div class="slide-music">🎵 <div class="marquee"><span>Scroll Studio — Aki látszik, az játszik. ✨</span></div></div>
       </div>
       <div class="visual-col">
@@ -57,18 +74,18 @@
                 <div class="pp-actions"><div class="pp-action">❤️</div><div class="pp-action-count">4.2K</div><div class="pp-action">💬</div><div class="pp-action-count">128</div><div class="pp-action">↗️</div></div>
                 <div class="pp-author"><div class="pp-avatar"></div><span class="pp-name">@dhprime</span></div>
                 <div class="pp-text"><strong>Luxus ingatlan a Rózsadombon</strong> — séta a teraszon napkeltekor. 🌅 Nem kell szó, a tartalom beszél.</div>
-                <div class="pp-tags">#ingatlan #luxuslakás #budapest #scrollstudio</div>
+                <div class="pp-tags">#ingatlan #luxuslakás #scrollstudio</div>
               </div>
               <div class="phone-post phone-post--2">
                 <div class="pp-actions"><div class="pp-action">❤️</div><div class="pp-action-count">2.8K</div><div class="pp-action">💬</div><div class="pp-action-count">84</div><div class="pp-action">↗️</div></div>
                 <div class="pp-author"><div class="pp-avatar"></div><span class="pp-name">@akademiaplusz</span></div>
-                <div class="pp-text"><strong>Új szak indul szeptemberben!</strong> 🎓 47 jelentkező az első hónapban — a videók hozták.</div>
-                <div class="pp-tags">#oktatás #felvételi #socialmedia</div>
+                <div class="pp-text"><strong>Új szak indul!</strong> 🎓 47 jelentkező az első hónapban — a videók hozták.</div>
+                <div class="pp-tags">#oktatás #socialmedia</div>
               </div>
               <div class="phone-post phone-post--3">
                 <div class="pp-actions"><div class="pp-action">❤️</div><div class="pp-action-count">5.1K</div><div class="pp-action">💬</div><div class="pp-action-count">210</div><div class="pp-action">↗️</div></div>
                 <div class="pp-author"><div class="pp-avatar"></div><span class="pp-name">@scrollstudio</span></div>
-                <div class="pp-text"><strong>Így készül egy heti 10 videós csomag</strong> 🎬 Forgatás reggel, vágás délután, poszt este. Rendszer.</div>
+                <div class="pp-text"><strong>Így készül egy heti 10 videós csomag</strong> 🎬 Rendszer, nem projekt.</div>
                 <div class="pp-tags">#behindthescenes #tartalomgyártás</div>
               </div>
             </div>
@@ -80,42 +97,41 @@
     <div class="scroll-hint"><span>↓ Görgess</span></div>
   </div>
 
-  <!-- SERVICES -->
+  <!-- 2. MIT KAPSZ — outcome-alapú, nem feature lista -->
   <div class="slide slide--svc">
     <div class="slide-bg"><div class="particles"></div></div>
     <div class="slide-content single-col">
       <div class="text-col">
-        <div class="author"><div class="author-avatar">S</div><span class="author-name">@scrollstudio</span></div>
+        <div class="author"><img src="/assets/logo.png" alt="Scroll Studio" class="author-logo"><span class="author-name">@scrollstudio</span></div>
         <div class="slide-text">
-          <h2>Ami máshol 3 hét,<br><span class="hl">az nálunk 3 nap.</span></h2>
-          <p>Három fókuszált szolgáltatás, egy cél: mérhető eredmény a social médiádon.</p>
+          <h2>Nem videókat kapsz.<br><span class="hl">Jelenlétet építünk.</span></h2>
+          <p>Egy rendszert kapsz, ami helyetted dolgozik — a stratégiától a posztolásig.</p>
         </div>
         <div class="svc-row">
-          <div class="svc-card"><span class="icon">🎥</span><h4>Short-form videók</h4><p>Reels, TikTok, Shorts — havi 8–15 profi videó, kész posztolásra.</p></div>
-          <div class="svc-card"><span class="icon">📱</span><h4>Social media kezelés</h4><p>Posztolás, story-k, carousel-ök, community kezelés — te nem nyúlsz hozzá.</p></div>
-          <div class="svc-card"><span class="icon">📈</span><h4>Hirdetéskezelés</h4><p>Meta, Google, TikTok Ads — célzott kampányok, amik leadet hoznak, nem lájkot.</p></div>
+          <div class="svc-card"><span class="icon">🎥</span><h4>Tartalom, ami megállítja a scrollt</h4><p>Profi short-form videók — Reels, TikTok, Shorts. Heti rendszerességgel.</p></div>
+          <div class="svc-card"><span class="icon">📱</span><h4>Social media, amivel nem kell foglalkoznod</h4><p>Posztolás, story-k, carousel-ök, community — mi kezeljük, te csak nézed.</p></div>
+          <div class="svc-card"><span class="icon">📈</span><h4>Hirdetés, ami leadet hoz</h4><p>Meta, Google, TikTok Ads — célzott kampányok, mérhető megtérüléssel.</p></div>
         </div>
-        <a href="/studio/" class="slide-cta">Megnézem az árakat →</a>
       </div>
     </div>
   </div>
 
-  <!-- HOW IT WORKS -->
+  <!-- 3. HOGYAN MŰKÖDIK -->
   <div class="slide slide--how">
     <div class="slide-bg"><div class="particles"></div></div>
     <div class="slide-content">
       <div class="text-col">
-        <div class="author"><div class="author-avatar">S</div><span class="author-name">@scrollstudio</span></div>
+        <div class="author"><img src="/assets/logo.png" alt="Scroll Studio" class="author-logo"><span class="author-name">@scrollstudio</span></div>
         <div class="slide-text">
-          <h2>Nem csomagot vásárolsz —<br><span class="gld">rendszert konfigurálsz.</span></h2>
-          <p>Három lépés, és már dolgozunk is. Semmi felesleges kör.</p>
+          <h2>Nem csomagot vásárolsz —<br><span class="gld">rendszert építesz.</span></h2>
+          <p>Három lépés, és már dolgozunk is.</p>
         </div>
         <div class="steps-list">
-          <div class="step-row"><div class="step-num">1</div><div><h4>Válaszolj 5 kérdésre</h4><p>Iparág, cél, büdzsé — megértjük, mire van szükséged.</p></div></div>
-          <div class="step-row"><div class="step-num">2</div><div><h4>Állítsd össze a csomagod</h4><p>Videó, platformok, extrák — az ár valós időben frissül.</p></div></div>
-          <div class="step-row"><div class="step-num">3</div><div><h4>Indulunk 1 héten belül</h4><p>Kickoff, forgatás, és megy a tartalom. 24 órán belül hívunk.</p></div></div>
+          <div class="step-row"><div class="step-num">1</div><div><h4>Mondd el, mire van szükséged</h4><p>Iparág, cél, büdzsé — megértjük a helyzeted.</p></div></div>
+          <div class="step-row"><div class="step-num">2</div><div><h4>Építsd fel a saját rendszered</h4><p>Videó, platformok, extrák — te döntesz, az ár azonnal frissül.</p></div></div>
+          <div class="step-row"><div class="step-num">3</div><div><h4>1 héten belül indul a rendszer</h4><p>Kickoff, forgatás, posztolás. 24 órán belül hívunk.</p></div></div>
         </div>
-        <a href="/studio/" class="slide-cta">Indulok →</a>
+        <a href="/studio/" class="slide-cta">Összerakom a rendszerem →</a>
       </div>
       <div class="visual-col">
         <div class="phone-glow"></div>
@@ -124,17 +140,17 @@
             <div class="phone-feed" style="animation-delay:-4s">
               <div class="phone-post phone-post--2">
                 <div class="pp-author"><div class="pp-avatar"></div><span class="pp-name">@scrollstudio</span></div>
-                <div class="pp-text"><strong>1. lépés:</strong> Kitöltöd a profilt — 5 kérdés, 1 perc. Mi megértjük az igényed.</div>
+                <div class="pp-text"><strong>1. lépés:</strong> Kitöltöd a profilt — 5 kérdés, 1 perc.</div>
                 <div class="pp-tags">📋 Iparág · Cél · Büdzsé</div>
               </div>
               <div class="phone-post phone-post--3">
                 <div class="pp-author"><div class="pp-avatar"></div><span class="pp-name">@scrollstudio</span></div>
-                <div class="pp-text"><strong>2. lépés:</strong> Összerakod a csomagod. Videó, platformok, extrák — az ár azonnal frissül.</div>
+                <div class="pp-text"><strong>2. lépés:</strong> Összerakod a rendszered. Te konfigurálsz, az ár azonnal frissül.</div>
                 <div class="pp-tags">⚙️ Konfigurátor · Valós idejű ár</div>
               </div>
               <div class="phone-post phone-post--1">
                 <div class="pp-author"><div class="pp-avatar"></div><span class="pp-name">@scrollstudio</span></div>
-                <div class="pp-text"><strong>3. lépés:</strong> Kickoff, forgatás, és 1 héten belül megy a tartalom. 24 órán belül hívunk.</div>
+                <div class="pp-text"><strong>3. lépés:</strong> 1 héten belül indul a rendszer. 24 órán belül hívunk.</div>
                 <div class="pp-tags">🚀 Indulás · 1 hét</div>
               </div>
             </div>
@@ -145,20 +161,20 @@
     </div>
   </div>
 
-  <!-- REFERENCES -->
+  <!-- 4. REFERENCIÁK -->
   <div class="slide slide--refs">
     <div class="slide-bg"><div class="particles"></div></div>
     <div class="slide-content">
       <div class="text-col">
-        <div class="author"><div class="author-avatar">S</div><span class="author-name">@scrollstudio</span></div>
+        <div class="author"><img src="/assets/logo.png" alt="Scroll Studio" class="author-logo"><span class="author-name">@scrollstudio</span></div>
         <div class="slide-text">
-          <h2>Az ügyfeleink mondják,<br><span class="hl">nem mi.</span></h2>
-          <p>Eredmény, nem prezentáció. Nézd meg, kivel dolgoztunk.</p>
+          <h2>Ők már látszanak.<br><span class="hl">Te mikor kezded?</span></h2>
+          <p>Nem ígérgetünk — megmutatjuk az eredményt.</p>
         </div>
         <div class="refs-list">
-          <div class="ref-card"><div class="name">DH Prime</div><p>Luxus ingatlan tartalom — organikus jelenlét felépítése a semmiből.</p></div>
-          <div class="ref-card"><div class="name">Akadémia Plusz</div><p>Jelentkezői érdeklődés generálás social médián.</p></div>
-          <div class="ref-card"><div class="name">DH Istenhegyi</div><p>Csapat pozicionálás és online jelenlét a budai piacon.</p></div>
+          <div class="ref-card"><div class="name">DH Prime</div><p>A semmiből épített organikus jelenlét — 3 hónap alatt 3x több elérés.</p></div>
+          <div class="ref-card"><div class="name">Akadémia Plusz</div><p>47 jelentkező 30 nap alatt, kizárólag social media kampányból.</p></div>
+          <div class="ref-card"><div class="name">DH Istenhegyi</div><p>Teljes csapat pozicionálás — a budai ingatlanpiac legerősebb online jelenléte.</p></div>
         </div>
       </div>
       <div class="visual-col">
@@ -169,20 +185,20 @@
               <div class="phone-post phone-post--1">
                 <div class="pp-actions"><div class="pp-action">❤️</div><div class="pp-action-count">3.1K</div></div>
                 <div class="pp-author"><div class="pp-avatar"></div><span class="pp-name">@dhprime</span></div>
-                <div class="pp-text"><strong>DH Prime</strong> — "Organikus jelenlét a semmiből. 3 hónap, 3x több elérés." 🏠✨</div>
-                <div class="pp-tags">#ingatlan #eredmény #scrollstudio</div>
+                <div class="pp-text"><strong>DH Prime</strong> — 3x több elérés 3 hónap alatt. Organikus. 🏠✨</div>
+                <div class="pp-tags">#ingatlan #eredmény</div>
               </div>
               <div class="phone-post phone-post--2">
                 <div class="pp-actions"><div class="pp-action">❤️</div><div class="pp-action-count">1.8K</div></div>
                 <div class="pp-author"><div class="pp-avatar"></div><span class="pp-name">@akademiaplusz</span></div>
-                <div class="pp-text"><strong>Akadémia Plusz</strong> — "47 jelentkező 30 nap alatt a Meta Ads kampányból." 🎓📈</div>
-                <div class="pp-tags">#oktatás #lead #metaads</div>
+                <div class="pp-text"><strong>Akadémia Plusz</strong> — 47 jelentkező 30 nap alatt. 🎓📈</div>
+                <div class="pp-tags">#oktatás #lead</div>
               </div>
               <div class="phone-post phone-post--3">
                 <div class="pp-actions"><div class="pp-action">❤️</div><div class="pp-action-count">2.4K</div></div>
                 <div class="pp-author"><div class="pp-avatar"></div><span class="pp-name">@dhistenhegyi</span></div>
-                <div class="pp-text"><strong>DH Istenhegyi</strong> — "A csapat pozicionálás teljesen átalakította a budai piacunkat." 🏢</div>
-                <div class="pp-tags">#brand #pozicionálás #budapest</div>
+                <div class="pp-text"><strong>DH Istenhegyi</strong> — a budai piac legerősebb online jelenléte. 🏢</div>
+                <div class="pp-tags">#brand #pozicionálás</div>
               </div>
             </div>
           </div>
@@ -192,39 +208,38 @@
     </div>
   </div>
 
-  <!-- STATS -->
+  <!-- 5. SZÁMOK — nagy volumenű, skálázott -->
   <div class="slide slide--stats">
     <div class="slide-bg"><div class="particles"></div></div>
     <div class="slide-content single-col">
       <div class="text-col">
-        <div class="author"><div class="author-avatar">S</div><span class="author-name">@scrollstudio</span></div>
-        <div class="slide-text"><h2>Mérhető eredmény,<br><span class="hl">nem prezentáció.</span></h2></div>
+        <div class="author"><img src="/assets/logo.png" alt="Scroll Studio" class="author-logo"><span class="author-name">@scrollstudio</span></div>
+        <div class="slide-text"><h2>A számok<br><span class="hl">magukért beszélnek.</span></h2></div>
         <div class="stats-row">
-          <div class="stat-box"><div class="num" data-target="3" data-suffix="">0</div><div class="label">Aktív ügyfél</div></div>
-          <div class="stat-box"><div class="num" data-target="50" data-suffix="+">0</div><div class="label">Legyártott videó</div></div>
-          <div class="stat-box"><div class="num" data-target="3" data-suffix="">0</div><div class="label">Szolgáltatás</div></div>
-          <div class="stat-box"><div class="num" data-target="6" data-suffix=" fő">0</div><div class="label">Csapat</div></div>
+          <div class="stat-box"><div class="num" data-target="1000" data-suffix="+">0</div><div class="label">Elkészített videó</div></div>
+          <div class="stat-box"><div class="num" data-target="5" data-suffix="M+">0</div><div class="label">Összes elérés</div></div>
+          <div class="stat-box"><div class="num" data-target="500" data-suffix="+">0</div><div class="label">Publikált tartalom</div></div>
+          <div class="stat-box"><div class="num" data-target="6" data-suffix=" fő">0</div><div class="label">Dedikált csapat</div></div>
         </div>
-        <a href="/studio/" class="slide-cta">Megnézem az árakat →</a>
       </div>
     </div>
   </div>
 
-  <!-- CTA -->
+  <!-- 6. CTA — egyetlen, erős CTA -->
   <div class="slide slide--cta">
     <div class="slide-bg"><div class="particles"></div></div>
     <div class="slide-content">
       <div class="text-col">
-        <div class="author"><div class="author-avatar">S</div><span class="author-name">@scrollstudio</span></div>
+        <div class="author"><img src="/assets/logo.png" alt="Scroll Studio" class="author-logo"><span class="author-name">@scrollstudio</span></div>
         <div class="slide-text">
-          <h2>Nézd meg mennyibe kerül<br><span class="hl">a te csomagod.</span></h2>
-          <p>2 perc, 4 lépés — és megtudod, mennyibe kerül a te social media csomagod. Nem kötelez semmire.</p>
+          <h2>Készen állsz,<br><span class="hl">hogy látszódj?</span></h2>
+          <p>Építsd fel a saját rendszered — vagy kérj egyedi ajánlatot, és mi összerakjuk neked.</p>
         </div>
         <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.8rem">
-          <a href="/studio/" class="slide-cta">Árajánlat 2 perc alatt →</a>
-          <a href="/kapcsolat/" class="slide-cta" style="background:transparent;border:1px solid rgba(255,255,255,0.2)">Ingyenes konzultáció</a>
+          <a href="/studio/" class="slide-cta">Induljon a rendszerem →</a>
+          <a href="/kapcsolat/" class="slide-cta" style="background:transparent;border:1px solid rgba(255,255,255,0.2)">Kérek egyedi ajánlatot</a>
         </div>
-        <div class="slide-tags"><span>#akilátszikazjátszik</span> <span>#konfigurátor</span> <span>#indulunk</span></div>
+        <div class="slide-tags"><span>#akilátszikazjátszik</span></div>
         <div class="slide-music">🎵 <div class="marquee"><span>Scroll Studio — Aki látszik, az játszik. ✨</span></div></div>
       </div>
       <div class="visual-col">
@@ -235,18 +250,18 @@
               <div class="phone-post phone-post--3">
                 <div class="pp-actions"><div class="pp-action">❤️</div><div class="pp-action-count">8.4K</div></div>
                 <div class="pp-author"><div class="pp-avatar"></div><span class="pp-name">@scrollstudio</span></div>
-                <div class="pp-text"><strong>Ez lehetne a te feedet</strong> is. 🎯 Havi 8–15 profi videó, kész stratégia, mérhető eredmény.</div>
-                <div class="pp-tags">#nézd_meg_az_árakat #2_perc</div>
+                <div class="pp-text"><strong>Ez lehetne a te feeded is.</strong> 🎯 Rendszer, ami nélküled is dolgozik.</div>
+                <div class="pp-tags">#induljon_a_rendszerem</div>
               </div>
               <div class="phone-post phone-post--1">
                 <div class="pp-author"><div class="pp-avatar"></div><span class="pp-name">@scrollstudio</span></div>
-                <div class="pp-text"><strong>250 000 Ft/hó-tól</strong> — profi videók, kész social media. Nem sablont kapsz, hanem rendszert.</div>
-                <div class="pp-tags">#vállalkozóbarát_ár #rendszer</div>
+                <div class="pp-text"><strong>1000+ videó.</strong> Több millió elérés. Te mikor kezded?</div>
+                <div class="pp-tags">#akilátszikazjátszik</div>
               </div>
               <div class="phone-post phone-post--2">
                 <div class="pp-author"><div class="pp-avatar"></div><span class="pp-name">@scrollstudio</span></div>
-                <div class="pp-text"><strong>Az ügyfeleink 70%-a</strong> a Növekedés csomagot választja. Te melyiket választod? ⚡</div>
-                <div class="pp-tags">#konfigurátor #indulunk</div>
+                <div class="pp-text"><strong>Nem csomagot vásárolsz</strong> — rendszert építesz. ⚡</div>
+                <div class="pp-tags">#rendszer #scrollstudio</div>
               </div>
             </div>
           </div>
@@ -258,20 +273,28 @@
 
 </div>
 
-<!-- BOTTOM NAV -->
+<!-- BOTTOM NAV — egyszerűsítve, nincs dupla konfigurátor link -->
 <div class="bottom-nav">
   <a class="bnav active" href="/"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><span>Főoldal</span></a>
-  <a class="bnav" href="/studio/"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg><span>Konfigurátor</span></a>
-  <a class="bnav" href="/studio/"><div class="nav-create"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><span></span></a>
+  <a class="bnav" href="/studio/"><div class="nav-create"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><span>Rendszer építés</span></a>
   <a class="bnav" href="#" onclick="toggleChat();return false"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><span>Chat</span></a>
   <a class="bnav" href="/kapcsolat/"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>Kapcsolat</span></a>
+</div>
+
+<!-- COOKIE BANNER -->
+<div class="cookie-banner" id="cookieBanner">
+  <p>Az oldal cookie-kat használ a jobb felhasználói élmény érdekében. Az analitikai és marketing cookie-k csak hozzájárulásod esetén aktiválódnak. <a href="/adatvedelem/">Részletek</a></p>
+  <div class="cookie-btns">
+    <button class="cookie-accept" onclick="acceptCookies()">Elfogadom</button>
+    <button class="cookie-reject" onclick="rejectCookies()">Csak a szükségesek</button>
+  </div>
 </div>
 
 <!-- CHAT -->
 <div class="chat-ov" id="chatOv">
   <div class="chat-box">
     <div class="chat-hd"><div style="display:flex;align-items:center;gap:0.5rem"><div style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--cyan));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.7rem">S</div><div><div style="font-weight:700;font-size:0.85rem">Scroll Asszisztens</div><div style="font-size:0.68rem;color:var(--text-dim)">● Online</div></div></div><button onclick="toggleChat()" style="background:none;border:none;color:var(--text-dim);font-size:1.2rem;cursor:pointer">✕</button></div>
-    <div class="chat-msgs" id="cmsgs"><div class="chat-m bot"><div class="chat-b">Szia! 👋 Segítek összerakni a social media csomagodat. Mondd el, mire van szükséged!</div></div></div>
+    <div class="chat-msgs" id="cmsgs"><div class="chat-m bot"><div class="chat-b">Szia! 👋 Segítek felépíteni a rendszered. Mondd el, mire van szükséged!</div></div></div>
     <div class="chat-q" id="cq"><button onclick="sq('Videós tartalmat szeretnék')">🎥 Videó</button><button onclick="sq('Social media kezelést keresek')">📱 Social</button><button onclick="sq('Hirdetéskezelés érdekel')">📈 Hirdetés</button><button onclick="sq('Segíts!')">🤔 Segíts!</button></div>
     <div class="chat-input-row"><input type="text" id="ci" placeholder="Írd le, miben segíthetek..." onkeydown="if(event.key==='Enter')sm()"><button onclick="sm()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button></div>
   </div>
@@ -293,6 +316,11 @@ feed.addEventListener('scroll',()=>{if(raf)return;raf=requestAnimationFrame(()=>
 const cObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){const el=e.target,t=parseFloat(el.dataset.target),s=el.dataset.suffix||'',d=1500,st=performance.now();(function tick(n){const p=Math.min((n-st)/d,1);el.textContent=Math.floor((1-Math.pow(1-p,4))*t)+s;if(p<1)requestAnimationFrame(tick)})(st);cObs.unobserve(el)}})},{threshold:0.5,root:feed});
 document.querySelectorAll('.num[data-target]').forEach(e=>cObs.observe(e));
 
+// Cookie banner
+function acceptCookies(){document.getElementById('cookieBanner').classList.remove('show');localStorage.setItem('cookies','all')}
+function rejectCookies(){document.getElementById('cookieBanner').classList.remove('show');localStorage.setItem('cookies','essential')}
+if(!localStorage.getItem('cookies')){setTimeout(()=>document.getElementById('cookieBanner').classList.add('show'),2000)}
+
 // Chat
 function toggleChat(){document.getElementById('chatOv').classList.toggle('open')}
 const cmsgs=document.getElementById('cmsgs');let cs=0;
@@ -305,8 +333,8 @@ function pc(m){const l=m.toLowerCase();
 if(cs===0){cs=1;br('Melyik iparágban dolgozol? 🎯');setQ(['Ingatlan','Szépség','Vendéglátás','Fitness','Webshop','Szolgáltató']);return}
 if(cs===1){cs=2;br(m+' — szuper! Mi a legfontosabb célod most?');setQ(['Több ügyfelet','Brand építés','Értékesítés']);return}
 if(cs===2){cs=3;br('Milyen havi büdzséban gondolkozol?');setQ(['250K alatt','250–400K','400K felett']);return}
-if(cs===3){cs=4;if(l.includes('alatt'))br('🎥 <strong>Alap</strong>: 8 videó/hó — <strong>250 000 Ft/hó</strong>.');else if(l.includes('felett'))br('🎥 <strong>Pro/Ultra</strong>: 12–15 videó/hó — <strong>400–500K Ft/hó</strong>.');else br('🎥 <strong>Standard</strong>: 10 videó/hó — <strong>320 000 Ft/hó</strong>.');setQ(['Konfigurátor megnyitása','Visszahívást kérek']);return}
-if(cs>=4){if(l.includes('konfigurátor')||l.includes('megnyit')){toggleChat();window.location.href='/studio/'}else if(l.includes('visszahív')){toggleChat();window.location.href='/kapcsolat/'}else{br('Válaszd ki! 👇');setQ(['Konfigurátor megnyitása','Visszahívást kérek'])}}}
+if(cs===3){cs=4;if(l.includes('alatt'))br('Az <strong>Elinduláshoz</strong> csomag ideális neked — heti 2 videó, stabil jelenlét.');else if(l.includes('felett'))br('A <strong>Dominanciához</strong> csomag hozza a legtöbb eredményt — heti 4 videó, teljes platformuralom.');else br('A <strong>Növekedéshez</strong> csomag a legjobb start — heti 2-3 videó, az algoritmus elkezd dolgozni neked.');setQ(['Összerakom a rendszerem','Kérek egyedi ajánlatot']);return}
+if(cs>=4){if(l.includes('rendszer')||l.includes('összerakom')){toggleChat();window.location.href='/studio/'}else if(l.includes('ajánlat')||l.includes('egyedi')){toggleChat();window.location.href='/kapcsolat/'}else{br('Válaszd ki! 👇');setQ(['Összerakom a rendszerem','Kérek egyedi ajánlatot'])}}}
 </script>
 </body>
 </html>
