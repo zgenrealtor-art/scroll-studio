@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Scroll Studio — Ajánlat</title>
+<meta name="description" content="A személyre szabott ajánlatod a Scroll Studio-tól.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<style>
+/* Ajanlat-specific */
+.offer-gate {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 2rem; max-width: 440px; margin: 0 auto;
+}
+.offer-gate h2 { font-family: var(--font-d); font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800; margin-bottom: 0.6rem; }
+.offer-gate p { color: var(--text-sec); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.8rem; }
+.code-input-wrap { display: flex; gap: 0.5rem; width: 100%; max-width: 360px; }
+.code-input {
+  flex: 1; padding: 0.85rem 1rem; border-radius: 10px;
+  background: rgba(255,255,255,0.05); border: 1.5px solid var(--border);
+  color: #fff; font-family: var(--font-d); font-size: 1.1rem; font-weight: 700;
+  text-align: center; letter-spacing: 0.15em; text-transform: uppercase;
+  outline: none; transition: border-color 0.3s;
+}
+.code-input:focus { border-color: var(--pink); }
+.code-input::placeholder { color: var(--text-dim); font-weight: 400; letter-spacing: 0.05em; font-size: 0.9rem; }
+.code-btn {
+  padding: 0.85rem 1.5rem; border-radius: 10px; background: var(--pink); color: #fff;
+  border: none; font-family: var(--font); font-size: 0.92rem; font-weight: 700;
+  cursor: pointer; transition: all 0.3s; white-space: nowrap;
+}
+.code-btn:hover { box-shadow: 0 6px 20px rgba(254,44,85,0.4); }
+.code-error { color: var(--pink); font-size: 0.82rem; margin-top: 0.6rem; display: none; }
+.code-hint { color: var(--text-dim); font-size: 0.78rem; margin-top: 1.5rem; }
+
+/* Offer view (shown after code entry) */
+.offer-view { display: none; width: 100%; max-width: 700px; margin: 0 auto; }
+.offer-view.show { display: block; }
+
+.offer-header {
+  text-align: center; margin-bottom: 2rem;
+}
+.offer-header .badge {
+  display: inline-block; padding: 0.3rem 0.9rem; border-radius: 100px;
+  background: rgba(254,44,85,0.1); border: 1px solid rgba(254,44,85,0.2);
+  color: var(--pink); font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.1em; margin-bottom: 0.8rem;
+}
+.offer-header h2 { font-family: var(--font-d); font-size: 1.8rem; font-weight: 800; margin-bottom: 0.3rem; }
+.offer-header p { color: var(--text-sec); font-size: 0.92rem; }
+
+.offer-card {
+  background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+  border-radius: 16px; padding: 2rem; margin-bottom: 1.2rem; position: relative; overflow: hidden;
+}
+.offer-card::before {
+  content: ''; position: absolute; top: -1px; left: 15%; right: 15%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--pink), var(--cyan), transparent);
+}
+.offer-card h3 {
+  font-family: var(--font-d); font-size: 1.1rem; font-weight: 700;
+  color: var(--gold); margin-bottom: 1rem;
+}
+
+.offer-line {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-size: 0.9rem;
+}
+.offer-line:last-child { border-bottom: none; }
+.offer-line .ol-name { color: var(--text-sec); }
+.offer-line .ol-price { font-weight: 600; }
+.offer-line.included .ol-price { color: var(--text-dim); }
+.offer-line.discount .ol-price { color: #22c55e; }
+
+.offer-total {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 1rem 0 0; margin-top: 0.5rem;
+  border-top: 2px solid rgba(200,169,110,0.2);
+}
+.offer-total .ot-label { font-family: var(--font-d); font-weight: 700; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.offer-total .ot-price {
+  font-family: var(--font-d); font-weight: 800; font-size: 1.8rem;
+  background: linear-gradient(135deg, var(--pink), var(--cyan));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+.offer-note {
+  background: rgba(37,244,238,0.06); border-left: 3px solid var(--cyan);
+  border-radius: 8px; padding: 1rem 1.2rem; margin-bottom: 1.2rem;
+  font-size: 0.88rem; color: var(--text-sec); line-height: 1.6;
+}
+.offer-note strong { color: var(--cyan); }
+
+.offer-valid {
+  text-align: center; font-size: 0.82rem; color: var(--text-dim); margin-bottom: 1.5rem;
+}
+
+.offer-actions {
+  display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;
+}
+.offer-accept {
+  padding: 0.85rem 2rem; border-radius: 10px; background: var(--pink); color: #fff;
+  border: none; font-family: var(--font); font-size: 1rem; font-weight: 700;
+  cursor: pointer; transition: all 0.3s;
+}
+.offer-accept:hover { box-shadow: 0 8px 24px rgba(254,44,85,0.4); transform: translateY(-2px); }
+.offer-secondary {
+  padding: 0.85rem 2rem; border-radius: 10px; background: transparent;
+  color: var(--text-sec); border: 1px solid var(--border);
+  font-family: var(--font); font-size: 0.92rem; font-weight: 500;
+  cursor: pointer; transition: all 0.3s; text-decoration: none;
+}
+.offer-secondary:hover { border-color: var(--cyan); color: var(--cyan); }
+
+@media(max-width:480px) {
+  .code-input-wrap { flex-direction: column; }
+  .offer-actions { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<div class="top-nav">
+  <a class="top-tab" href="/">Főoldal</a>
+  <a class="top-tab" href="/studio/">Konfigurátor</a>
+  <a class="top-tab active" href="/ajanlat/">Ajánlat</a>
+  <a class="top-tab" href="/kapcsolat/">Kapcsolat</a>
+</div>
+
+<div class="feed" id="feed">
+  <div class="slide slide--cfg">
+    <div class="slide-bg"><div class="particles"></div></div>
+    <div class="cfg-content" style="max-width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:80vh">
+
+      <!-- CODE GATE -->
+      <div class="offer-gate" id="offerGate">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:1.2rem;opacity:0.7"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <h2>A te ajánlatod <span class="hl">itt vár.</span></h2>
+        <p>Add meg az ajánlati kódodat, amit emailben vagy telefonon kaptál tőlünk.</p>
+        <div class="code-input-wrap">
+          <input type="text" class="code-input" id="codeInput" placeholder="pl. SS-2024-ANNA" maxlength="20" autocomplete="off">
+          <button class="code-btn" onclick="checkCode()">Megnyitom →</button>
+        </div>
+        <div class="code-error" id="codeError">Ez a kód nem érvényes. Ellenőrizd, vagy kérdezz minket!</div>
+        <div class="code-hint">Nincs kódod? <a href="/studio/" style="color:var(--cyan);text-decoration:none">Állítsd össze a csomagodat</a> vagy <a href="/kapcsolat/" style="color:var(--cyan);text-decoration:none">kérj konzultációt</a>.</div>
+      </div>
+
+      <!-- OFFER VIEW (shown after valid code) -->
+      <div class="offer-view" id="offerView">
+        <div class="offer-header">
+          <div class="badge">Személyre szabott ajánlat</div>
+          <h2 id="offerName">Kedves Anna!</h2>
+          <p>Íme a számodra összeállított csomag.</p>
+        </div>
+
+        <div class="offer-card">
+          <h3>A csomagod tartalma</h3>
+          <div id="offerLines">
+            <!-- JS fills this -->
+          </div>
+          <div class="offer-total">
+            <span class="ot-label">Havi ár:</span>
+            <span class="ot-price" id="offerPrice">0 Ft</span>
+          </div>
+        </div>
+
+        <div class="offer-note" id="offerNote">
+          <strong>Viktor üzenete:</strong> Ez az ajánlat a te igényeidre lett összeállítva. Ha bármit módosítanál, csak szólj — 24 órán belül frissítjük.
+        </div>
+
+        <div class="offer-valid" id="offerValid">Ez az ajánlat 2026. április 15-ig érvényes.</div>
+
+        <div class="offer-actions">
+          <button class="offer-accept" onclick="acceptOffer()">Elfogadom az ajánlatot ✓</button>
+          <a href="/kapcsolat/" class="offer-secondary">Kérdésem van</a>
+        </div>
+
+        <div id="offerAccepted" style="display:none;text-align:center;padding:2rem 0">
+          <h2 style="font-family:var(--font-d);font-size:1.6rem;margin-bottom:0.6rem">Köszönjük! 🎉</h2>
+          <p style="color:var(--text-sec);font-size:1rem;line-height:1.6">Elfogadtad az ajánlatot.<br><strong style="color:#fff">Viktor 24 órán belül hív</strong> a következő lépésekről.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <a class="bnav" href="/"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><span>Főoldal</span></a>
+  <a class="bnav" href="/studio/"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg><span>Konfigurátor</span></a>
+  <a class="bnav" href="/studio/"><div class="nav-create"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><span></span></a>
+  <a class="bnav active" href="/ajanlat/"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg><span>Ajánlat</span></a>
+  <a class="bnav" href="/kapcsolat/"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>Kapcsolat</span></a>
+</div>
+
+<script>
+// Particles
+document.querySelectorAll('.particles').forEach(c=>{for(let i=0;i<7;i++){const p=document.createElement('div');p.className='particle';p.style.left=Math.random()*100+'%';p.style.animationDuration=(10+Math.random()*14)+'s';p.style.animationDelay=Math.random()*12+'s';const s=1.5+Math.random()*2.5;p.style.width=p.style.height=s+'px';c.appendChild(p)}});
+
+// ===== DEMO OFFERS DATABASE =====
+// In production this would be a backend API call.
+// For now, offers are stored client-side as demo.
+const OFFERS = {
+  'SS-DEMO-ANNA': {
+    name: 'Anna',
+    company: 'DH Prime',
+    note: 'Ez az ajánlat a te ingatlanos igényeidre lett összeállítva. A Növekedés csomag + Meta Ads kombóval az Akadémia Plusz 47 jelentkezőt generált — nálad is ezt célozzuk.',
+    valid: '2026. április 15.',
+    items: [
+      { name: 'Növekedés csomag (10 videó/hó)', price: 320000 },
+      { name: 'Facebook', price: 30000 },
+      { name: 'IG Story kezelés — heti 3-4', price: 50000 },
+      { name: 'Carousel posztok — havi 4 db', price: 40000 },
+      { name: 'Meta Ads kezelés', price: 50000 },
+      { name: 'Egyedi copywriting', price: 20000 },
+    ],
+    discount: null,
+    strategy: 'long' // -10%
+  },
+  'SS-DEMO-PETER': {
+    name: 'Péter',
+    company: 'FitGym Budapest',
+    note: 'Az Intenzív csomag a legjobb választás fitness stúdióknak — heti 3 videóval dominálni fogsz az algoritmusban. A hirdetéskezeléssel együtt 2 héten belül leadeket hozunk.',
+    valid: '2026. április 20.',
+    items: [
+      { name: 'Intenzív csomag (12 videó/hó)', price: 400000 },
+      { name: 'YouTube Shorts', price: 30000 },
+      { name: 'IG Story kezelés — napi', price: 80000 },
+      { name: 'Meta + Google kombó', price: 80000 },
+      { name: 'Reels cover design', price: 15000 },
+    ],
+    discount: null,
+    strategy: 'fast'
+  }
+};
+
+function fmt(n) { return n.toLocaleString('hu-HU').replace(/\s/g, ' '); }
+
+function checkCode() {
+  const code = document.getElementById('codeInput').value.trim().toUpperCase();
+  const error = document.getElementById('codeError');
+
+  if (!code) { error.style.display = 'block'; error.textContent = 'Add meg az ajánlati kódodat.'; return; }
+
+  const offer = OFFERS[code];
+  if (!offer) {
+    error.style.display = 'block';
+    error.textContent = 'Ez a kód nem érvényes. Ellenőrizd, vagy kérdezz minket!';
+    return;
+  }
+
+  // Show offer
+  error.style.display = 'none';
+  document.getElementById('offerGate').style.display = 'none';
+  document.getElementById('offerView').classList.add('show');
+
+  // Fill data
+  document.getElementById('offerName').textContent = `Kedves ${offer.name}!`;
+  document.getElementById('offerNote').innerHTML = `<strong>Viktor üzenete:</strong> ${offer.note}`;
+  document.getElementById('offerValid').textContent = `Ez az ajánlat ${offer.valid}-ig érvényes.`;
+
+  // Items
+  let html = '';
+  let total = 0;
+  offer.items.forEach(item => {
+    html += `<div class="offer-line"><span class="ol-name">${item.name}</span><span class="ol-price">${item.price === 0 ? 'Benne' : fmt(item.price) + ' Ft'}</span></div>`;
+    total += item.price;
+  });
+
+  // Strategy discount
+  if (offer.strategy === 'long') {
+    const disc = Math.round(total * 0.1);
+    html += `<div class="offer-line discount"><span class="ol-name">Éves elköteleződés kedvezmény (-10%)</span><span class="ol-price">-${fmt(disc)} Ft</span></div>`;
+    total -= disc;
+  }
+
+  document.getElementById('offerLines').innerHTML = html;
+  document.getElementById('offerPrice').textContent = fmt(total) + ' Ft';
+}
+
+function acceptOffer() {
+  document.querySelector('.offer-card').style.display = 'none';
+  document.querySelector('.offer-note').style.display = 'none';
+  document.querySelector('.offer-valid').style.display = 'none';
+  document.querySelector('.offer-actions').style.display = 'none';
+  document.getElementById('offerAccepted').style.display = 'block';
+}
+
+// Auto-fill code from URL param: /ajanlat/?code=SS-DEMO-ANNA
+const urlCode = new URLSearchParams(window.location.search).get('code');
+if (urlCode) {
+  document.getElementById('codeInput').value = urlCode;
+  checkCode();
+}
+</script>
+</body>
+</html>

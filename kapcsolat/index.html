@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Scroll Studio — Kapcsolat</title>
+<meta name="description" content="Vedd fel velünk a kapcsolatot — 24 órán belül visszahívunk.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="top-nav">
+  <a class="top-tab" href="/">Főoldal</a>
+  <a class="top-tab" href="/studio/">Konfigurátor</a>
+  <a class="top-tab" href="/ajanlat/">Ajánlat</a>
+  <a class="top-tab active" href="/kapcsolat/">Kapcsolat</a>
+</div>
+
+<div class="right-nav" id="rightNav">
+  <div class="rnav-item active" data-s="0" data-tip="Üzenet küldés">📩</div>
+  <div class="rnav-item" data-s="1" data-tip="Elérhetőségek">📍</div>
+  <div class="rnav-item" data-s="2" data-tip="Rólunk">👥</div>
+  <div class="rnav-item" data-s="3" data-tip="Csapat">🎬</div>
+</div>
+<div class="rnav-tooltip" id="tooltip"></div>
+
+<div class="feed" id="feed">
+
+  <!-- CONTACT FORM -->
+  <div class="slide slide--contact">
+    <div class="slide-bg">
+      <div class="particles"></div>
+      <svg class="slide-svg svg-envelope" viewBox="0 0 240 200" fill="none"><rect x="20" y="40" width="200" height="140" rx="12" stroke="white" stroke-width="1.5" opacity="0.2"/><polyline points="20,40 120,120 220,40" stroke="white" stroke-width="1.5" opacity="0.15" class="draw-line"/><circle cx="120" cy="90" r="30" stroke="white" stroke-width="1" opacity="0.1"><animate attributeName="r" values="30;35;30" dur="3s" repeatCount="indefinite"/></circle></svg>
+    </div>
+    <div class="cfg-content" id="contactSlide">
+      <div class="cfg-label">Kapcsolat</div>
+      <h2 class="cfg-title">24 órán belül hívunk.<br><span class="hl">Nem ígérjük — csináljuk.</span></h2>
+      <p class="cfg-desc">Add meg az adataid, és visszajelzünk. Vagy foglalj egy 30 perces ingyenes konzultációt.</p>
+      <div class="fg">
+        <div class="ff"><label>Név *</label><input type="text" id="fn" placeholder="Kovács Anna"></div>
+        <div class="ff"><label>Cégnév</label><input type="text" id="fc" placeholder="Cég Kft."></div>
+        <div class="ff"><label>Email *</label><input type="email" id="fe" placeholder="anna@ceg.hu"></div>
+        <div class="ff"><label>Telefon *</label><input type="tel" id="fp" placeholder="+36 30 123 4567"></div>
+        <div class="ff full"><label>Mivel foglalkozol?</label><select id="fi"><option value="">Válassz iparágat...</option><option>Szépség</option><option>Egészségügy</option><option>Ingatlan</option><option>Vendéglátás</option><option>Szálláshely</option><option>Fitness</option><option>Ügyvéd</option><option>Oktatás</option><option>Építőipar</option><option>Webshop</option><option>Szolgáltató</option><option>Személyes márka</option></select></div>
+        <div class="ff full"><label>Üzenet</label><textarea id="fm" placeholder="Miben segíthetünk? (opcionális)"></textarea></div>
+      </div>
+      <label style="display:flex;align-items:flex-start;gap:0.5rem;margin-top:0.6rem;font-size:0.78rem;color:var(--text-dim);cursor:pointer">
+        <input type="checkbox" id="fgdpr" style="margin-top:0.15rem;accent-color:var(--pink)">
+        <span>Elfogadom az <a href="/aszf/" style="color:var(--cyan)" target="_blank">ÁSZF</a>-et és az <a href="/adatvedelem/" style="color:var(--cyan)" target="_blank">Adatvédelmi Tájékoztatót</a>. *</span>
+      </label>
+      <button class="form-submit" onclick="subForm()">Küldés — 24 órán belül visszahívunk</button>
+    </div>
+  </div>
+
+  <!-- CONTACT DETAILS -->
+  <div class="slide slide--how">
+    <div class="slide-bg"><div class="particles"></div></div>
+    <div class="slide-content">
+      <div class="author"><div class="author-avatar">S</div><span class="author-name">@scrollstudio</span></div>
+      <div class="slide-text">
+        <h2>Elérhetőségek 📍</h2>
+        <p>Írj, hívj, vagy gyere be — nyitottak vagyunk.</p>
+      </div>
+      <div class="refs-list" style="margin-top:1.2rem">
+        <div class="ref-card"><div class="name">📧 Email</div><p style="font-style:normal"><a href="mailto:hello@scrollstudio.hu" style="color:var(--cyan);text-decoration:none">hello@scrollstudio.hu</a></p></div>
+        <div class="ref-card"><div class="name">📞 Telefon</div><p style="font-style:normal"><a href="tel:+36301234567" style="color:var(--cyan);text-decoration:none">+36 30 123 4567</a></p></div>
+        <div class="ref-card"><div class="name">📍 Iroda</div><p style="font-style:normal">1101 Budapest, Üllői út 124.</p></div>
+        <div class="ref-card"><div class="name">🔗 Social</div><p style="font-style:normal;display:flex;gap:0.8rem"><a href="#" style="color:var(--cyan);text-decoration:none">Instagram</a><a href="#" style="color:var(--cyan);text-decoration:none">TikTok</a><a href="#" style="color:var(--cyan);text-decoration:none">LinkedIn</a></p></div>
+        <div class="ref-card"><div class="name">📄 Jogi</div><p style="font-style:normal;display:flex;gap:0.8rem"><a href="/aszf/" style="color:var(--cyan);text-decoration:none">ÁSZF</a><a href="/adatvedelem/" style="color:var(--cyan);text-decoration:none">Adatvédelem</a></p></div>
+        <div class="ref-card"><div class="name">🏢 Cégadatok</div><p style="font-style:normal;font-size:0.78rem">Scroll Studio Kft. · 1101 Budapest, Üllői út 124.<br>Cégjegyzékszám: [pótlandó] · Adószám: [pótlandó]</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RÓLUNK — MISSZIÓ + ÉRTÉKEK -->
+  <div class="slide slide--svc">
+    <div class="slide-bg">
+      <div class="particles"></div>
+      <svg class="slide-svg svg-circles" viewBox="0 0 300 250" fill="none">
+        <circle cx="80" cy="80" r="50" stroke="white" stroke-width="1" opacity="0.3"/>
+        <circle cx="220" cy="80" r="50" stroke="white" stroke-width="1" opacity="0.3"/>
+        <circle cx="150" cy="190" r="50" stroke="white" stroke-width="1" opacity="0.3"/>
+        <line x1="120" y1="95" x2="180" y2="95" stroke="white" stroke-width="0.8" opacity="0.2" class="draw-line"/>
+        <line x1="100" y1="125" x2="135" y2="155" stroke="white" stroke-width="0.8" opacity="0.2" class="draw-line"/>
+        <line x1="200" y1="125" x2="165" y2="155" stroke="white" stroke-width="0.8" opacity="0.2" class="draw-line"/>
+      </svg>
+    </div>
+    <div class="slide-content">
+      <div class="author"><div class="author-avatar">S</div><span class="author-name">@scrollstudio</span></div>
+      <div class="slide-text">
+        <h2>Rólunk 🚀</h2>
+        <p style="font-style:italic;color:var(--gold);margin-bottom:0.8rem">"Azért létezünk, hogy a magyar vállalkozások digitális jelenlétét a valós minőségükhöz emeljük — gyorsan, megfizethetően, mesterséges intelligenciával."</p>
+      </div>
+      <div class="steps-list">
+        <div class="step-row"><div class="step-num" style="background:var(--gold)">1</div><div><h4>Sebesség intelligenciával</h4><p>AI-eszközökkel dolgozunk, de a kreativitás mindig emberi marad.</p></div></div>
+        <div class="step-row"><div class="step-num" style="background:var(--gold)">2</div><div><h4>Őszinte partnerség</h4><p>Nem ígérgetünk — megmondjuk, mi működik, és mi nem.</p></div></div>
+        <div class="step-row"><div class="step-num" style="background:var(--gold)">3</div><div><h4>Eredmény, nem prezentáció</h4><p>Nem szép slideokat csinálunk, hanem mérhető növekedést.</p></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CSAPAT -->
+  <div class="slide slide--stats">
+    <div class="slide-bg">
+      <div class="particles"></div>
+      <svg class="slide-svg svg-bars" viewBox="0 0 260 220" fill="none">
+        <rect x="20" y="120" width="40" height="80" rx="4" fill="white" opacity="0.08"><animate attributeName="height" values="0;80" dur="1s" fill="freeze"/><animate attributeName="y" values="200;120" dur="1s" fill="freeze"/></rect>
+        <rect x="80" y="60" width="40" height="140" rx="4" fill="white" opacity="0.12"><animate attributeName="height" values="0;140" dur="1.2s" fill="freeze"/><animate attributeName="y" values="200;60" dur="1.2s" fill="freeze"/></rect>
+        <rect x="140" y="90" width="40" height="110" rx="4" fill="white" opacity="0.1"><animate attributeName="height" values="0;110" dur="1.1s" fill="freeze"/><animate attributeName="y" values="200;90" dur="1.1s" fill="freeze"/></rect>
+        <rect x="200" y="30" width="40" height="170" rx="4" fill="white" opacity="0.14"><animate attributeName="height" values="0;170" dur="1.4s" fill="freeze"/><animate attributeName="y" values="200;30" dur="1.4s" fill="freeze"/></rect>
+      </svg>
+    </div>
+    <div class="slide-content">
+      <div class="author"><div class="author-avatar">S</div><span class="author-name">@scrollstudio</span></div>
+      <div class="slide-text">
+        <h2>A csapat 👥</h2>
+        <p>6 ember, akik a te növekedésedért dolgoznak.</p>
+      </div>
+      <div class="refs-list" style="margin-top:1rem">
+        <div class="ref-card" style="display:flex;gap:0.8rem;align-items:center">
+          <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--gold));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.75rem;flex-shrink:0">E</div>
+          <div><div class="name" style="margin-bottom:0">Eszter</div><p style="font-style:normal;font-size:0.82rem">Ügyvezető — Brand stratégia és ügyfélkapcsolat</p></div>
+        </div>
+        <div class="ref-card" style="display:flex;gap:0.8rem;align-items:center">
+          <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--pink));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.75rem;flex-shrink:0">V</div>
+          <div><div class="name" style="margin-bottom:0">Viktor</div><p style="font-style:normal;font-size:0.82rem">CEO, Sales — Üzletfejlesztés és AI tréner</p></div>
+        </div>
+        <div class="ref-card" style="display:flex;gap:0.8rem;align-items:center">
+          <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--cyan));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.75rem;flex-shrink:0">Z</div>
+          <div><div class="name" style="margin-bottom:0">Zoli</div><p style="font-style:normal;font-size:0.82rem">Videográf — Forgatás és tartalomgyártás</p></div>
+        </div>
+        <div class="ref-card" style="display:flex;gap:0.8rem;align-items:center">
+          <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--cyan));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.75rem;flex-shrink:0">D</div>
+          <div><div class="name" style="margin-bottom:0">Dani</div><p style="font-style:normal;font-size:0.82rem">AI fejlesztő — Webfejlesztés és automatizáció</p></div>
+        </div>
+        <div class="ref-card" style="display:flex;gap:0.8rem;align-items:center">
+          <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--gold));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.75rem;flex-shrink:0">B</div>
+          <div><div class="name" style="margin-bottom:0">Barni</div><p style="font-style:normal;font-size:0.82rem">Web fejlesztő — Weboldalak és platform építés</p></div>
+        </div>
+        <div class="ref-card" style="display:flex;gap:0.8rem;align-items:center">
+          <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--pink));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.75rem;flex-shrink:0">N</div>
+          <div><div class="name" style="margin-bottom:0">Nóri</div><p style="font-style:normal;font-size:0.82rem">Vágó & Sales — Videó utómunka és ügyfélszerzés</p></div>
+        </div>
+      </div>
+      <a href="/studio/" class="slide-cta" style="margin-top:1rem">Konfiguráld a csomagod →</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <a class="bnav" href="/"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><span>Főoldal</span></a>
+  <a class="bnav" href="/studio/"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg><span>Konfigurátor</span></a>
+  <a class="bnav" href="/studio/"><div class="nav-create"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><span></span></a>
+  <a class="bnav" href="#" onclick="toggleChat();return false"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><span>Chat</span></a>
+  <a class="bnav active" href="/kapcsolat/"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>Kapcsolat</span></a>
+</div>
+
+<!-- CHAT -->
+<div class="chat-ov" id="chatOv">
+  <div class="chat-box">
+    <div class="chat-hd"><div style="display:flex;align-items:center;gap:0.5rem"><div style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--cyan));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.7rem">S</div><div><div style="font-weight:700;font-size:0.85rem">Scroll Asszisztens</div><div style="font-size:0.68rem;color:var(--text-dim)">● Online</div></div></div><button onclick="toggleChat()" style="background:none;border:none;color:var(--text-dim);font-size:1.2rem;cursor:pointer">✕</button></div>
+    <div class="chat-msgs" id="cmsgs"><div class="chat-m bot"><div class="chat-b">Szia! 👋 Ha kérdésed van, vagy szeretnéd megnézni a csomagokat, szólj bátran!</div></div></div>
+    <div class="chat-q" id="cq"><button onclick="sq('Megnézném a csomagokat')">📦 Csomagok</button><button onclick="sq('Mennyi ideig tart?')">⏱️ Idő</button><button onclick="sq('Kik vagytok?')">👥 Csapat</button></div>
+    <div class="chat-input-row"><input type="text" id="ci" placeholder="Kérdezz bátran..." onkeydown="if(event.key==='Enter')sm()"><button onclick="sm()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button></div>
+  </div>
+</div>
+
+<script>
+document.querySelectorAll('.particles').forEach(c=>{for(let i=0;i<7;i++){const p=document.createElement('div');p.className='particle';p.style.left=Math.random()*100+'%';p.style.animationDuration=(10+Math.random()*14)+'s';p.style.animationDelay=Math.random()*12+'s';const s=1.5+Math.random()*2.5;p.style.width=p.style.height=s+'px';c.appendChild(p)}});
+
+const feed=document.getElementById('feed'),slides=[...document.querySelectorAll('.slide')],tooltip=document.getElementById('tooltip');
+function go(i){slides[i]&&slides[i].scrollIntoView({behavior:'smooth'})}
+document.querySelectorAll('.rnav-item[data-s]').forEach(el=>{el.addEventListener('click',()=>go(parseInt(el.dataset.s)))});
+document.querySelectorAll('.rnav-item[data-tip]').forEach(el=>{el.addEventListener('mouseenter',()=>{const r=el.getBoundingClientRect();tooltip.textContent=el.dataset.tip;tooltip.style.top=(r.top+r.height/2-12)+'px';tooltip.style.right=(window.innerWidth-r.left+8)+'px';tooltip.style.left='auto';tooltip.classList.add('show')});el.addEventListener('mouseleave',()=>tooltip.classList.remove('show'))});
+let raf=null;
+feed.addEventListener('scroll',()=>{if(raf)return;raf=requestAnimationFrame(()=>{const idx=Math.round(feed.scrollTop/window.innerHeight);document.querySelectorAll('.rnav-item[data-s]').forEach(n=>n.classList.toggle('active',parseInt(n.dataset.s)===idx));raf=null})},{passive:true});
+
+function subForm(){const n=document.getElementById('fn').value,e=document.getElementById('fe').value,p=document.getElementById('fp').value;if(!n||!e||!p){alert('Töltsd ki a kötelező mezőket (Név, Email, Telefon).');return}if(!document.getElementById('fgdpr').checked){alert('Kérjük, fogadd el az ÁSZF-et és az Adatvédelmi Tájékoztatót.');return}document.getElementById('contactSlide').innerHTML='<div style="padding:3rem 0;text-align:center"><h2 style="font-family:var(--font-d);font-size:1.6rem;margin-bottom:0.6rem">Köszönjük, '+n.split(' ')[0]+'! 🎉</h2><p style="color:var(--text-sec);font-size:1rem;line-height:1.6">Megkaptuk az üzeneted.<br>24 órán belül visszahívunk.</p></div>'}
+
+function toggleChat(){document.getElementById('chatOv').classList.toggle('open')}
+const cmsgs=document.getElementById('cmsgs');
+function am(t,tp){const d=document.createElement('div');d.className='chat-m '+tp;d.innerHTML='<div class="chat-b">'+t+'</div>';cmsgs.appendChild(d);cmsgs.scrollTop=cmsgs.scrollHeight}
+function br(t){setTimeout(()=>am(t,'bot'),600)}
+function setQ(bs){setTimeout(()=>{document.getElementById('cq').innerHTML=bs.map(b=>`<button onclick="sq('${b.replace(/'/g,"\\'")}')">${b}</button>`).join('')},700)}
+function sq(t){am(t,'usr');const l=t.toLowerCase();
+if(l.includes('csomag'))br('A csomagokat a <a href="/studio/" style="color:var(--cyan)">konfigurátorban</a> tudod összerakni! Havi 250–500K Ft, a te igényeidre szabva.');
+else if(l.includes('idő')||l.includes('tart'))br('Az onboarding után 1 héten belül indulunk. Az első tartalmak 2 héten belül készek!');
+else if(l.includes('kik')||l.includes('csapat'))br('6 fős csapat: Eszter (ügyvezető), Viktor (sales), Zoli (videográf), Dani (AI fejlesztő), Barni (webfejlesztő), Nóri (vágó). Görgess le a csapat slide-ra! 👥');
+else br('Jó kérdés! Töltsd ki a formot, és személyesen megbeszéljük. 📞');
+setQ(['Csomagok','Mennyi idő?','Csapat'])}
+function sm(){const v=document.getElementById('ci').value.trim();if(!v)return;document.getElementById('ci').value='';sq(v)}
+</script>
+</body>
+</html>
